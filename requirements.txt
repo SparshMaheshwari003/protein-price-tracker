@@ -5,3 +5,4 @@ lxml
 plyer
 selenium
 webdriver-manager
+gunicorn
