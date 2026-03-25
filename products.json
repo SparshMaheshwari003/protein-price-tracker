@@ -1,0 +1,30 @@
+[
+    {
+        "url": "https://www.avvatarindia.com/public/product/alpha-whey-belgian-chocolate-flavour-2-kg-2509104551-890",
+        "name": "Avvatar Alpha Whey | 2 Kg | Chocolate Hazelnut Flavour",
+        "target_price": 3700.0,
+        "total_weight": 2000.0,
+        "protein_percentage": 62.5
+    },
+    {
+        "url": "https://naturaltein.in/collections/all/products/whey-protein-isolate",
+        "name": "100% Natural Whey Protein Isolate \u2013 Pista Kulfi (30g protein)",
+        "target_price": 4000.0,
+        "total_weight": 1000.0,
+        "protein_percentage": 85.7
+    },
+    {
+        "url": "https://www.muscleblaze.com/sv/muscleblaze-100-clean-raw-whey-protein-concentrate/SP-40454?navKey=VRNT-73781",
+        "name": "MuscleBlaze 100% Clean Raw Whey Protein Concentrate",
+        "target_price": 8500.0,
+        "total_weight": 4000.0,
+        "protein_percentage": 80.0
+    },
+    {
+        "url": "https://www.amazon.in/MuscleBlaze-Performance-Certified-Chocolate-Hazelnut/dp/B095SV6BBZ/ref=sr_1_5?crid=2KP411FIMY6FK&dib=eyJ2IjoiMSJ9.0cFiZuELO3CVHMoM4kxuAYw4l8Ui8ctTIBXAkFJ3RzgOmcCO5cX0Gf-xKlGxU6SqiXjnPh5pmZkTpOHCpObf7AbGm5VfyfGwXVSRr8diCXzKznYUr46l4UOQnEThtWorO5NBlLxZkPPH65gEQ4trEzjchczDja_E5px1pugmoOziAi6jnvW0OIPFoTX5pV_VFAsg44W4rfoggqfQHyHFwLgFgxl5svXTesVR5aDn-MBK6_1W5yha4f4t2uNJWtzW5D_1c8W4PzQBCI5z580V0Tc-X0bhIgka3Nhe5UOs4dk.3rHtmGFIJBhoZOAVqw2k4ejrmgs0TzkIX74BFETof3Q&dib_tag=se&keywords=protein&qid=1773908097&sprefix=protei%2Caps%2C429&sr=8-5&th=1",
+        "name": "MuscleBlaze Biozyme Performance Whey Protein Powder, Chocolate Hazelnut (2kg / 4.4lbs)",
+        "target_price": 5500.0,
+        "total_weight": 2000.0,
+        "protein_percentage": 70.0
+    }
+]

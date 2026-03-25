@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Protein Price Tracker</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        h1 {
+            color: white;
+            font-weight: 600;
+        }
+
+        h4 {
+            color: #cbd5f5;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .card {
+            background: #1e293b;
+            border: none;
+            border-radius: 12px;
+        }
+
+        .btn-primary {
+            background: #6366f1;
+            border: none;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            border: none;
+        }
+
+        .btn-success {
+            background: #22c55e;
+            border: none;
+        }
+
+        .btn-edit {
+            background: #3b82f6;
+            border: none;
+            color: white;
+        }
+
+        /* 🔥 NEW TRACK BUTTON STYLE */
+        .btn-outline-light {
+            border: 1px solid #475569;
+            color: #cbd5f5;
+        }
+
+        .btn-outline-light:hover {
+            background: #6366f1;
+            color: white;
+            border: none;
+        }
+
+        input {
+            background: #0f172a !important;
+            color: white !important;
+            border: 1px solid #334155 !important;
+        }
+
+        input::placeholder {
+            color: #94a3b8 !important;
+        }
+
+        table {
+            color: white;
+        }
+
+        th {
+            color: #cbd5f5;
+        }
+
+        a.product-link {
+            color: #9ecbff;
+            text-decoration: none;
+            transition: 0.2s;
+            font-weight: 500;
+        }
+
+        a.product-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container py-5">
+
+    <h1 class="text-center mb-4">💪 Protein Price Tracker</h1>
+
+    <!-- 🚀 TRACK NOW SECTION -->
+    <div class="card p-4 mb-4">
+        <h4>🚀 Track Now (Supported Sites)</h4>
+
+        <div class="d-flex flex-wrap gap-3 mt-2">
+
+            <a href="https://www.amazon.in" target="_blank" class="btn btn-outline-light">
+                🛒 Amazon
+            </a>
+
+            <a href="https://www.muscleblaze.com" target="_blank" class="btn btn-outline-light">
+                💪 MuscleBlaze
+            </a>
+
+            <a href="https://www.avvatarindia.com" target="_blank" class="btn btn-outline-light">
+                🥛 Avvatar
+            </a>
+
+            <a href="https://asitisnutrition.com" target="_blank" class="btn btn-outline-light">
+                🧬 As-It-Is
+            </a>
+
+            <a href="https://naturaltein.in" target="_blank" class="btn btn-outline-light">
+                🌿 Naturaltein
+            </a>
+
+        </div>
+
+        <p class="text-muted mt-3" style="font-size: 14px;">
+            Open a product page → Copy URL → Paste below to track price automatically.
+        </p>
+    </div>
+
+    <!-- ADD PRODUCT -->
+    <div class="card p-4 mb-4">
+        <h4>➕ Add Product</h4>
+
+        <form action="/add" method="post" class="row g-3">
+            <div class="col-md-6">
+                <input class="form-control" name="url" placeholder="Product URL" required>
+            </div>
+
+            <div class="col-md-6">
+                <input class="form-control" name="name" placeholder="Product Name" required>
+            </div>
+
+            <div class="col-md-4">
+                <input class="form-control" name="price" placeholder="Target Price" required>
+            </div>
+
+            <div class="col-md-4">
+                <input class="form-control" name="weight" placeholder="Weight (g)">
+            </div>
+
+            <div class="col-md-4">
+                <input class="form-control" name="protein" placeholder="Protein %">
+            </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary w-100">➕ Add Product</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- PRODUCT TABLE -->
+    <div class="card p-4 mb-4">
+        <h4>📦 Tracked Products</h4>
+
+        <table class="table table-dark table-hover mt-3">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Current ₹</th>
+                    <th>₹/g</th>
+                    <th>Target ₹</th>
+                    <th>Weight</th>
+                    <th>Protein %</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in products %}
+                <tr>
+                    <td>{{ loop.index0 }}</td>
+
+                    <td>
+                        <a href="{{ p.url }}" target="_blank" class="product-link">
+                            {{ p.name }}
+                        </a>
+                    </td>
+
+                    <td>
+                        {% if p.current_price %}
+                            ₹{{ p.current_price }}
+                        {% else %}
+                            <span class="text-danger">Error</span>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {% if p.ppg %}
+                            ₹{{ p.ppg }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+
+                    <!-- EDIT TARGET -->
+                    <td>
+                        <form action="/edit" method="POST" class="d-flex gap-2">
+                            <input type="hidden" name="index" value="{{ loop.index0 }}">
+                            <input type="number" name="target_price" value="{{ p.target_price }}"
+                                   class="form-control form-control-sm" style="width:90px;" required>
+                            <button class="btn btn-edit btn-sm">✔</button>
+                        </form>
+                    </td>
+
+                    <td>{{ p.total_weight or '-' }}</td>
+                    <td>{{ p.protein_percentage or '-' }}</td>
+
+                    <td>
+                        <a href="/delete/{{ loop.index0 }}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if not products %}
+            <p class="text-muted">No products added yet.</p>
+        {% endif %}
+    </div>
+
+    <!-- START BUTTON -->
+    <div class="text-center">
+        <a href="/start">
+            <button class="btn btn-success px-4 py-2">🚀 Start Tracking</button>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
